@@ -10,6 +10,16 @@ const server = http.createServer(function( request, response ){
 				response.write( contents );
 				response.end();
 		})
+        fs.readFile('./stylesheets/style.css', 'utf-8', function(errors, contents){
+			response.writeHead(200, {'Content-Type': 'text/css'} );
+				response.write( contents );
+				response.end();
+		})
+        fs.readFile('./images/cats/Tabby_cat_with_blue_eyes-3336579.jpg', 'utf-8', function(errors, contents){
+			response.writeHead(200, {'Content-Type': 'img/jpg'} );
+				response.write( contents );
+				response.end();
+		})
 	}
 
     else if( request.url === "/cats" ){
