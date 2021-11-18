@@ -12,7 +12,7 @@ const server = http.createServer(function( request, response ){
 		})
 	}
     else if(request.url === '/image1') {
-        fs.readFile('./images/Cars-2-Wallpaper-Tokio-drift-Walt-Disney-Pixar-animated-film-racing-sport-Owen-Wilson-FILEminimizer', function (errors, contents){
+        fs.readFile('./images/Cars-2-Wallpaper-Tokio-drift-Walt-Disney-Pixar-animated-film-racing-sport-Owen-Wilson-FILEminimizer.jpg', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'image/jpg'});
             response.write(contents);
             response.end();
@@ -25,11 +25,8 @@ const server = http.createServer(function( request, response ){
             response.end();
         });
     }
-    
-
-
-    else if(request.url === '/stylesheets/styles.css') {
-        fs.readFile('./stylesheets/styles.css', 'utf8', function (errors, contents){
+    else if(request.url === '/style') {
+        fs.readFile('./stylesheets/style.css', 'utf8', function (errors, contents){
             response.writeHead(200, {'Content-Type': 'text/css'});
             response.write(contents);
             response.end();
@@ -43,15 +40,29 @@ const server = http.createServer(function( request, response ){
 				response.end();
 		})
 	}
-/*
+    else if(request.url === '/image3') {
+        fs.readFile('./images/cats/Tabby_cat_with_blue_eyes-3336579.jpg', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        });
+    }
+    else if(request.url === '/image4') {
+        fs.readFile('./images/cats/image0.jfif', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        });
+    }
+
     else if( request.url === "/cars/new" ){
-		fs.readFile('dojos.html', 'utf-8', function(errors, contents){
+		fs.readFile('./views/carsnew.html', 'utf-8', function(errors, contents){
 			response.writeHead(200, {'Content-Type': 'text/html'} );
 				response.write( contents );
 				response.end();
 		})
 	}
-*/
+
 	else{
 		response.writeHead( 404 );
 		response.end( "Route Not Found!" );
