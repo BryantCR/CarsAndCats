@@ -10,17 +10,31 @@ const server = http.createServer(function( request, response ){
 				response.write( contents );
 				response.end();
 		})
-        fs.readFile('./stylesheets/style.css', 'utf-8', function(errors, contents){
-			response.writeHead(200, {'Content-Type': 'text/css'} );
-				response.write( contents );
-				response.end();
-		})
-        fs.readFile('./images/cats/Tabby_cat_with_blue_eyes-3336579.jpg', 'utf-8', function(errors, contents){
-			response.writeHead(200, {'Content-Type': 'img/jpg'} );
-				response.write( contents );
-				response.end();
-		})
 	}
+    else if(request.url === '/image1') {
+        fs.readFile('./images/Cars-2-Wallpaper-Tokio-drift-Walt-Disney-Pixar-animated-film-racing-sport-Owen-Wilson-FILEminimizer', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        });
+    }
+    else if(request.url === '/image2') {
+        fs.readFile('./images/26962_9104011630.jpg', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'image/jpg'});
+            response.write(contents);
+            response.end();
+        });
+    }
+    
+
+
+    else if(request.url === '/stylesheets/styles.css') {
+        fs.readFile('./stylesheets/styles.css', 'utf8', function (errors, contents){
+            response.writeHead(200, {'Content-Type': 'text/css'});
+            response.write(contents);
+            response.end();
+        });
+    }
 
     else if( request.url === "/cats" ){
 		fs.readFile('./views/cats.html', 'utf-8', function(errors, contents){
